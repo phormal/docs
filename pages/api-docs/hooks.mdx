@@ -48,6 +48,19 @@ This hook can validate the minimum and maximum length on the input of a field.
 | `minLength` | `number`, `undefined` or `null` | Set the minimum length of the input |
 | `maxLength` | `number`, `undefined` or `null` | Set the maximum length of the input |
 
+### useRegex
+
+```bash copy
+npm i @phormal/use-regex
+```
+
+This hook can validate the input of a field against a regular expression. It can also, optionally, help you display an error message showing your user what format is expected.
+
+|         Argument         |   Type   |                                             Description                                              | Required |
+|:------------------------:|:--------:|:----------------------------------------------------------------------------------------------------:|:--------:|
+|         `regex`          | `RegExp` |                               The pattern that the input has to match                                |   Yes    |
+| `readableExpectedFormat` | `string` | A string to display in your error message, for users to visualize what the expected input looks like |    No    |
+
 ### useRequired
 
 ```bash copy

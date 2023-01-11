@@ -19,6 +19,18 @@ const BasicDemo = () => {
         label: 'Do you accept our terms and conditions?',
         type: 'checkbox',
         value: true,
+      },
+      isHuman: {
+        label: 'Are you a human?',
+        type: 'checkbox',
+        value: false,
+        disabled: true
+      },
+      isAnimal: {
+        label: 'Are you a human?',
+        type: 'checkbox',
+        value: true,
+        disabled: true
       }
     }, {
       el: '#phormal-checkboxes',

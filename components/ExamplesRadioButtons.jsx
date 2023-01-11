@@ -17,7 +17,7 @@ const BasicDemo = () => {
         options: [
           {value: 'creditcard', label: 'Credit card'},
           {value: 'paypal', label: 'PayPal'},
-          {value: 'bitcoin', label: 'Bitcoin'}
+          {value: 'bitcoin', label: 'Bitcoin', disabled: true},
         ]
       },
     }, {
