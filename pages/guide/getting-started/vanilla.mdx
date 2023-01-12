@@ -1,0 +1,34 @@
+# Tutorial of the basics
+
+For this short tutorial, we will need the core package, as well as some packages for theme and validation:
+
+```bash copy
+npm install @phormal/core @phormal/theme-basic @phormal/use-email @phormal/use-required @phormal/use-length
+```
+
+We will create a form with three input fields. The **name** field will be a required field, and have a minimum length of 3 characters. The **email** field will also be required, and has to contain a valid email address. Lastly, there will be a checkbox for subscribing to a **newsletter**.
+
+## Step 1: JavaScript
+
+import Vanilla from '../../../code-examples/getting-started/vanilla.mdx'
+
+<Vanilla />
+
+## Step 2: HTML
+
+In `formConfig`, we have specified the element, `el`, where the form should be rendered. Your HTML needs an element with the id `phormal`.
+
+## Step 3: CSS
+
+The stylesheet for the basic theme is included in the `@phormal/theme-basic` package. You can import it such as:
+
+```
+@import '@phormal/theme-basic/dist/index.css'
+```
+
+## Result
+
+import BasicDemo from "../../../components/BasicDemo";
+
+<BasicDemo />
+

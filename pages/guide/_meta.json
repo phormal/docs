@@ -3,5 +3,7 @@
   "getting-started": "Getting started",
   "examples": "Examples",
   "validation": "Validation",
-  "vue-integration": "Vue"
+  "vue-integration": {
+    "display": "hidden"
+  }
 }
