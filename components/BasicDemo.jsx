@@ -8,6 +8,16 @@ const BasicDemo = () => {
 
   useEffect(() => {
     const form = new Phormal({
+      paymentMethod: {
+        type: 'radiogroup',
+        label: 'Payment Method',
+        value: 'paypal',
+        options: [
+          {label: 'PayPal', value: 'paypal'},
+          {label: 'Credit card', value: 'creditcard'},
+          {label: 'Klarna', value: 'klarna'},
+        ]
+      },
       name: {
         label: 'Name',
         hooks: [useRequired(), useLength(3)],
@@ -20,7 +30,7 @@ const BasicDemo = () => {
         type: 'checkbox',
         label: 'Newsletter',
         value: true
-      }
+      },
     }, {
       el: '#phormal',
       theme: 'basic',

@@ -1,10 +1,17 @@
 ```js copy
-import { Phormal } from '@phormal/core';
-import useEmail from "@phormal/use-email";
-import useRequired from "@phormal/use-required";
-import useLength from "@phormal/use-length";
+import { Phormal, useEmail, useRequired, useLength } from '@phormal/core';
 
 const formFields = {
+  paymentMethod: {
+    type: 'radiogroup',
+    label: 'Payment Method',
+    value: 'paypal',
+    options: [
+      {label: 'PayPal', value: 'paypal'},
+      {label: 'Credit card', value: 'creditcard'},
+      {label: 'Klarna', value: 'klarna'}
+    ]
+  },
   name: {
     label: 'Name',
     hooks: [useRequired(), useLength(3)]
@@ -17,7 +24,7 @@ const formFields = {
     type: 'checkbox',
     label: 'Newsletter',
     value: true
-  }
+  },
 }
 
 const formConfig = { el: '#phormal', theme: 'basic' }
@@ -27,4 +34,7 @@ const form = new Phormal(formFields, formConfig)
 // form.name = ''
 // form.email = ''
 // form.newsletter = true
+// form.$values() = { name: '', email: '', newsletter: true }
+// form.$validate() = false (false for form not yet being valid)
+
 ```

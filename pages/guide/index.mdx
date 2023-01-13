@@ -6,16 +6,14 @@ import { Callout } from 'nextra-theme-docs'
 
 ## Library of packages
 
-Phormal is a modular library. It aims to be feature rich, without bloating your bundled code. Therefore, you only need to install as much functionality as needed for your specific use-case. As a minimum, you will need to install the core package of the library:
+Phormal is library of a few packages. At the least, you will need to install the core package:
 
 ```bash copy
 npm install @phormal/core
 ```
 
-## Further packages
+This one contains the code for rendering form fields of different types, logic for validating them, and translations for displaying error messages in different languages. Though only 11 languages are supported right now, it is our goal to provide translations for as many languages as possible (mainly for error messages).
 
-The other packages of this library are divided into three categories.
+The validators and translations, however, are all tree-shakeable, meaning you will only end up with roughly as much bundled code as you need.
 
-* Themes for adding CSS to your forms.
-* Hooks for adding logic (such as validation) to your form fields.
-* Components: for now the library only offers a dedicated component for Vue 3.
+If you want to style the form yourself, you will not have to download anything else. For using out built in themes, however, move on to [Getting started](/guide/getting-started/vanilla).

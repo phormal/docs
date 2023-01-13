@@ -1,6 +1,6 @@
 # Hooks
 
-This library offers a way of *hooking* into the logic of the form fields. Below follows a list of all official hooks and their documentation. Please note, however, that you can also [write your own hooks](/api-docs/customization) if needed.
+This library offers a way of *hooking* into the logic of the form fields. If hooks validate the input, they also come with built in translations in all [11 supported languages](https://github.com/phormal/phormal/blob/master/tests/unit/language/index.spec.ts). Below follows a list of all official hooks and their documentation. Please note, however, that you can also [write your own hooks](/api-docs/customization) if needed.
 
 ## Usage
 
@@ -19,27 +19,38 @@ For more precise examples on how to use a hook, please refer to the code on [exa
 
 
 ## List of hooks
-### useAutoCapitalize
 
-```bash copy
-npm i @phormal/use-auto-capitalize
-```
+### useAutoCapitalize
 
 This hook will automatically capitalize the first letter of each word in the input value. The hook is not configurable.
 
-### useEmail
+```js
+import { useAutoCapitalize } from '@phormal/core'
 
-```bash copy
-npm i @phormal/use-email
+const formFields = {
+  name: {
+    label: 'Name',
+    hooks: [useAutoCapitalize()]
+  }
+}
 ```
+
+### useEmail
 
 This hook will validate that the input is a valid email address. The hook is not configurable.
 
-### useLength
+```js
+import { useEmail } from '@phormal/core'
 
-```bash copy
-npm i @phormal/use-length
+const formFields = {
+  email: {
+    label: 'Email',
+    hooks: [useEmail()]
+  }
+}
 ```
+
+### useLength
 
 This hook can validate the minimum and maximum length on the input of a field.
 
@@ -48,11 +59,26 @@ This hook can validate the minimum and maximum length on the input of a field.
 | `minLength` | `number`, `undefined` or `null` | Set the minimum length of the input |
 | `maxLength` | `number`, `undefined` or `null` | Set the maximum length of the input |
 
-### useRegex
+```js
+import { useLength } from '@phormal/core'
 
-```bash copy
-npm i @phormal/use-regex
+const formFields = {
+  name: {
+    label: 'Name',
+    hooks: [useLength(null, 10)] // no minimum length, maximum length of 10
+  },
+  description: {
+    label: 'Description',
+    hooks: [useLength(10, 100)] // minimum length of 10, maximum length of 100
+  },
+  address: {
+    label: 'Address',
+    hooks: [useLength(10)] // minimum length of 10, no maximum length
+  }
+}
 ```
+
+### useRegex
 
 This hook can validate the input of a field against a regular expression. It can also, optionally, help you display an error message showing your user what format is expected.
 
@@ -61,21 +87,63 @@ This hook can validate the input of a field against a regular expression. It can
 |         `regex`          | `RegExp` |                               The pattern that the input has to match                                |   Yes    |
 | `readableExpectedFormat` | `string` | A string to display in your error message, for users to visualize what the expected input looks like |    No    |
 
-### useRequired
+```js
+import { useRegex } from '@phormal/core'
 
-```bash copy
-npm i @phormal/use-required
+const formFields = {
+  orderNumber: {
+    label: 'Order Number',
+    hooks: [useRegex(/PH-\d{8}/)] // only allow order numbers that start with PH- and have 8 digits
+  },
+  orderNumberFriendlyErrpr: {
+    label: 'Order Number',
+    hooks: [useRegex(/PH-\d{8}/), 'PH-XXXXXXXX'] // same as above, but will display the expected format to the user in the error message
+  },
+}
 ```
+
+### useRequired
 
 This hook will validate that the input is not empty. The hook is not configurable.
 
-### useValidZip
+```js
+import { useRequired } from '@phormal/core'
 
-```bash copy
-npm i @phormal/use-valid-zip
+const formFields = {
+  name: {
+    label: 'Name',
+    hooks: [useRequired()]
+  }
+}
 ```
+
+### useValidZip
 
 This hook will validate that the format of a postal code matches the required format for a given country. The hook is not configurable, but requires 2 things to work properly:
 
-1. It can only be used on a field of type `text`
+1. It can only be used on a field of type `text` (which is the default for any field, if not specified)
 2. It needs the presence of another field named `country`. This field needs a value that matches a valid country code, according to the ISO-3166 Alpha-2 standard: https://www.iso.org/obp/ui/#search/code/
+
+```js
+import { useValidZip } from '@phormal/core'
+
+const formFields = {
+  country: {
+    type: 'select',
+    label: 'Country',
+    hooks: [useRequired()],
+    value: 'DE',
+    options: [
+      {value: 'US', label: 'United States'},
+      {value: 'CA', label: 'Canada'},
+      {value: 'MX', label: 'Mexico'},
+      {value: 'FR', label: 'France'},
+      {value: 'DE', label: 'Germany'}
+    ]
+  },
+  zip: {
+    label: 'ZIP code',
+    hooks: [useValidZip()]
+  }
+}
+```

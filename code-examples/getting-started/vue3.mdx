@@ -1,53 +1,56 @@
 ```vue copy
-<template>
-  <Phormal ref="phormal" :fields="formFields" :config="formConfig" />
-</template>
+<script setup>
+import {ref, onMounted} from "vue";
+import {Phormal, useLength, useEmail, useRequired} from "@phormal/core";
 
-<script>
-import {Phormal} from '@phormal/component-vue3';
-import useEmail from "@phormal/use-email";
-import useRequired from "@phormal/use-required";
-import useLength from "@phormal/use-length";
-
-export default defineComponent({
-  components: {
-    Phormal,
+const formFields = {
+  paymentMethod: {
+    type: 'radiogroup',
+    label: 'Payment Method',
+    value: 'paypal',
+    options: [
+      {label: 'PayPal', value: 'paypal'},
+      {label: 'Credit card', value: 'creditcard'},
+      {label: 'Klarna', value: 'klarna'},
+    ]
   },
-
-  data() {
-    return {
-      formFields: {
-        name: {
-          label: 'Name',
-          hooks: [useRequired(), useLength(3)]
-        },
-        email: {
-          label: 'Email',
-          hooks: [useRequired(), useEmail()]
-        },
-        newsletter: {
-          type: 'checkbox',
-          label: 'Newsletter',
-          value: true
-        }
-      },
-      formConfig: { theme: 'basic' }
-    }
+  name: {
+    label: 'Name',
+    hooks: [useRequired(), useLength(3)]
   },
+  email: {
+    label: 'Email',
+    hooks: [useRequired(), useEmail()]
+  },
+  newsletter: {
+    type: 'checkbox',
+    label: 'Newsletter',
+    value: true
+  },
+}
 
-  methods: {
-    validate() {
-      this.$refs.phormal.$validate();
-    },
+const formConfig = {
+  theme: 'basic',
+  el: '#phormal',
+  language: 'en'
+}
 
-    getValues() {
-      return this.$refs.phormal.$values(); // { name: '', email: '', newsletter: true }
-    }
-  }
+const phormal = ref(null);
+
+onMounted(() => {
+  phormal.value = new Phormal(formFields, formConfig);
 });
+
 </script>
+
+<template>
+  <div>
+    <div id="phormal"></div>
+  </div>
+</template>
 
 <style>
 @import '@phormal/theme-basic/dist/index.css';
 </style>
+
 ```
