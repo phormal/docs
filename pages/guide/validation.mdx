@@ -1,16 +1,14 @@
 # Validating form input
 
-For validating data, Phormal uses a concept called **hooks**. Instead of making a field required with `required: true`, or giving it a minimum- and maximum length through for example `{ minLength: 3, maxLength: 10 }`, we install hooks. This has one simple reason: this way we keep bundle sizes small. Instead of storing tons of translations for error messages in different languages in the core library, we install our validators one by one.
+For validating data, Phormal uses a concept called **hooks**. Instead of making a field required with `required: true`, or giving it a minimum- and maximum length through for example `{ minLength: 3, maxLength: 10 }`, we install hooks. This might seem verbose at first, but of course has its reasons:
 
-This way, you neither need to worry about writing validators, nor error messages yourself. Phormal does it for you, and provides multi-language error messages. All you need to do is install your validator, and [configure the language](/api-docs#config).
+1. This way, we keep the logic for detecting errors in the input, and their translations into different languages, together in one place.
+2. By only adding the translations through adding a hook, we can keep bundle sizes smaller. The multitude of translations of a hook never end up in your bundled code, unless you explicitly use the hook.
 
-For example:
+An example of hooks usage:
 
 ```js
-import {Phormal} from "@phormal/core";
-import useEmail from "@phormal/use-email";
-import useRequired from "@phormal/use-required";
-import useLength from "@phormal/use-length";
+import {Phormal, useEmail, useLength, useRequired} from "@phormal/core";
 
 new Phormal(
   {
@@ -30,7 +28,7 @@ new Phormal(
 )
 ```
 
-would give you the following form. Try typing a little, to see the spanish translations of the error messages.
+would give you the following form. Try typing a little, and maybe deleting your own input, to see the spanish translations of the error messages.
 
 import DemoWithSpanish from "../../components/DemoWithSpanish";
 

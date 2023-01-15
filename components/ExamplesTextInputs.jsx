@@ -1,9 +1,5 @@
-import {Phormal} from "@phormal/core";
+import {Phormal, useEmail, useLength, useRequired, useAutoCapitalize} from "@phormal/core";
 import {useEffect} from "react";
-import useEmail from "@phormal/use-email";
-import useRequired from "@phormal/use-required";
-import useLength from "@phormal/use-length";
-import useAutoCapitalize from "@phormal/use-auto-capitalize";
 
 const BasicDemo = () => {
 

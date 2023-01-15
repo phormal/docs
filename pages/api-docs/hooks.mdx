@@ -78,6 +78,60 @@ const formFields = {
 }
 ```
 
+### useMinMax
+
+This hook allows you to validate the minimum and maximum value of a number input.
+
+|  Argument  |              Type               |            Description             | Required |
+|:----------:|:-------------------------------:|:----------------------------------:|:--------:|
+| `minValue` | `number`, `undefined` or `null` | Set the minimum value of the input |   Yes    |
+| `maxValue` |      `number`, `undefined`      | Set the maximum value of the input |    No    |
+
+```js
+import { useMinMax } from '@phormal/core'
+
+const formFields = {
+  age: {
+    label: 'Name',
+    type: 'number',
+    hooks: [useMinMax(1, 200)] // minimum value of 1, maximum value of 1000
+  },
+  price: {
+    label: 'Price',
+    type: 'number',
+    hooks: [useMinMax(10)] // minimum value of 10, no maximum value
+  },
+  quantity: {
+    label: 'Quantity',
+    type: 'number',
+    hooks: [useMinMax(null, 100)] // no minimum value, maximum value of 100
+  }
+}
+```
+
+### useUrl
+
+This hook will validate a url. The hook optionally takes a configuration object, with two properties `allowedHosts`, and `allowedProtocols`, as in the examples below.
+
+```js
+import { useUrl } from '@phormal/core'
+
+const formFields = {
+  url: {
+    label: 'Email',
+    hooks: [useUrl()] // validates that the input is a valid url
+  },
+  urlInvalidHost: {
+    label: 'URL with valid host',
+    hooks: [useUrl({ allowedHosts: ['google.com', 'google.nl', 'google.be'] })] // validates that the input is a valid url and that the host is one of the allowed hosts
+  },
+  urlInvalidProtocol: {
+    label: 'URL with valid protocol',
+    hooks: [useUrl({ allowedProtocols: ['https'] })] // validates that the input is a valid url and that the protocol is one of the allowed protocols
+  }
+}
+```
+
 ### useRegex
 
 This hook can validate the input of a field against a regular expression. It can also, optionally, help you display an error message showing your user what format is expected.
