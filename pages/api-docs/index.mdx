@@ -6,9 +6,7 @@ import { Callout } from 'nextra-theme-docs'
 
 ## The Phormal instance
 
-The Phormal instance is the main class of the library. For basic usage, please refer to [Getting started](/guide/getting-started#step-1-javascript).
-
-If you're using the [Vue 3 component](/guide/getting-started), the documentation below for `fields` and `config`, match the prop names of the component.
+The Phormal instance is the main class of the library. For basic usage, please refer to [Getting started](/guide/getting-started/vanilla).
 
 An instance of Phormal is initialized through the `Phormal` constructor. It takes two arguments:
 
@@ -114,12 +112,13 @@ A field condition always consists of key-value pairs, where the key is the name 
 
 The second parameter of the `Phormal` constructor is the form configuration. These are its available properties:
 
-|   Property   |  type  |                                                                                     Purpose                                                                                      | required | Default  |
-|:------------:|:------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------:|:--------:|
-|     `el`     | string |                                                               Selector of HTML element on which to mount the form                                                                |   yes    |    -     |
-|   `theme`    | string |                                                                                  Name of theme                                                                                   |    no    | `basic`  |
-|  `language`  | string | Set the language in which error messages should be shown, for example `'us'` or `'de'`. Should be of [ISO 639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) |    no    |   `en`   |
-| `validation` | string |                                    `active` for automatic validation of form, on all user-input. `passive` for disabling automatic validation                                    |    no    | `active` |
+|      Property      |  type  |                                                                                     Purpose                                                                                      | required | Default  |
+|:------------------:|:------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:--------:|:--------:|
+|        `el`        | string |                                                               Selector of HTML element on which to mount the form                                                                |   yes    |    -     |
+|      `theme`       | string |                                                                                  Name of theme                                                                                   |    no    | `basic`  |
+|     `language`     | string | Set the language in which error messages should be shown, for example `'us'` or `'de'`. Should be of [ISO 639-1 standard](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) |    no    |   `en`   |
+| `fallbackLanguage` | string | If you dynamically set the language for the form, and the possibility remains, that this language is not yet supported by this library, you will want to set a fallback language |    no    |   `en`   |
+|    `validation`    | string |                                    `active` for automatic validation of form, on all user-input. `passive` for disabling automatic validation                                    |    no    | `active` |
 
 ### Methods
 

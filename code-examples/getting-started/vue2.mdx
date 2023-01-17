@@ -49,6 +49,10 @@ export default {
     this.form = new Phormal(this.formFields, this.formConfig);
   },
 
+  beforeDestroy() {
+    this.form.$destroy();
+  },
+
   methods: {
     validate() {
       this.form.$validate();

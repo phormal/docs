@@ -13,6 +13,7 @@
   "dependencies": {
     "@next/font": "^13.1.0",
     "@phormal/core": "^0.1.0-alpha.16",
+    "@phormal/react": "^0.1.0-alpha.19",
     "@phormal/theme-basic": "^0.1.0-alpha.16",
     "@phormal/theme-material": "^0.1.0-alpha.16",
     "next": "^13.0.7",

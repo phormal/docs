@@ -1,1 +1,85 @@
-This is just a page stub. Feel free to edit this page by clicking the link in the right sidebar.
+# Tutorial of the basics - React
+
+For this short tutorial, we will need the React adapter, as well as a theme:
+
+```bash copy
+npm install @phormal/react @phormal/theme-basic
+```
+
+We will create a form with four input fields. The **paymentMethod** radio group will be rendered with three different options. The **name** field will be a required field, and have a minimum length of 3 characters. The **email** field will also be required, and has to contain a valid email address. Lastly, there will be a checkbox for subscribing to a **newsletter**.
+
+## Code
+
+```tsx copy
+import {useLength, useEmail, useRequired} from '@phormal/core'
+import {useForm, FormContent} from '@phormal/react'
+import '@phormal/theme-basic/dist/index.css'
+import {useState} from 'react'
+
+export default function PhormalExample() {
+  const formFields = {
+    paymentMethod: {
+      type: 'radiogroup',
+      label: 'Payment Method',
+      value: 'paypal',
+      options: [
+        {label: 'PayPal', value: 'paypal'},
+        {label: 'Credit card', value: 'creditcard'},
+        {label: 'Klarna', value: 'klarna'},
+      ]
+    },
+    name: {
+      label: 'Name',
+      hooks: [useRequired(), useLength(3)]
+    },
+    email: {
+      label: 'Email',
+      hooks: [useRequired(), useEmail()]
+    },
+    newsletter: {
+      type: 'checkbox',
+      label: 'Newsletter',
+      value: true
+    },
+  }
+  const formInstance = useForm(formFields)
+
+  const [values, setValues] = useState<null|Record<string, any>>(null)
+
+  const getValues = () => {
+    setValues(formInstance.$values())
+  }
+
+  const validate = () => {
+    const formIsValid = formInstance.$validate()
+    console.log(formIsValid)
+  }
+
+  return (
+    <>
+      <main>
+        <div className={'container'}>
+          <h1>Phormal</h1>
+
+          <FormContent instance={formInstance} />
+
+          <button onClick={getValues}>Get values</button>
+
+          <button onClick={validate}>Validate</button>
+        </div>
+      </main>
+    </>
+  )
+}
+```
+
+## Result
+
+import BasicDemo from "../../../components/BasicDemo";
+
+<BasicDemo />
+
+## Example repo
+
+If you want to check this code out and play around with it, you can fork [this example-repo](https://github.com/phormal/example-react/fork).
+

@@ -1,6 +1,6 @@
-```vue copy
+```vue
 <script setup>
-import {ref, onMounted} from "vue";
+import {ref, onMounted, onBeforeUnmount} from "vue";
 import {Phormal, useLength, useEmail, useRequired} from "@phormal/core";
 
 const formFields = {
@@ -41,10 +41,16 @@ onMounted(() => {
   phormal.value = new Phormal(formFields, formConfig);
 });
 
+onBeforeUnmount(() => {
+  phormal.value.$destroy();
+});
+
 </script>
 
 <template>
-  <div>
+  <div class="container">
+    <h1>Phormal</h1>
+
     <div id="phormal"></div>
   </div>
 </template>
@@ -52,5 +58,6 @@ onMounted(() => {
 <style>
 @import '@phormal/theme-basic/dist/index.css';
 </style>
+
 
 ```
