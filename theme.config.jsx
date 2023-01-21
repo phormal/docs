@@ -3,6 +3,7 @@ export default {
   project: {
     link: 'https://github.com/phormal/phormal',
   },
+  darkMode: false,
   docsRepositoryBase: 'https://github.com/phormal/phormal/tree/master/docs',
   feedback: {
     content: null,

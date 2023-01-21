@@ -1,14 +1,11 @@
 {
-  "index": {
-    "type": "page",
-    "title": "Home"
-  },
-  "guide": {
-    "type": "page",
-    "title": "Guide"
-  },
-  "api-docs": {
-    "type": "page",
-    "title": "API"
+  "index": "Introduction",
+  "getting-started": "Getting started",
+  "usage": "Usage",
+  "examples": "Examples",
+  "themes": "Themes",
+  "hooks": "Hooks",
+  "old-getting-started": {
+    "display": "hidden"
   }
 }

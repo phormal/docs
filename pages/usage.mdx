@@ -6,12 +6,12 @@ import { Callout } from 'nextra-theme-docs'
 
 ## The Phormal instance
 
-The Phormal instance is the main class of the library. For basic usage, please refer to [Getting started](/guide/getting-started/vanilla).
-
-An instance of Phormal is initialized through the `Phormal` constructor. It takes two arguments:
+The Phormal instance is the main class of the library. An instance of Phormal is initialized through the `Phormal` constructor. It takes two arguments:
 
 * [`fields`](#fields), which is an object containing configuration for the fields of the form.
 * [`config`](#config), which is an object containing configuration for the form itself.
+
+If you're using a framework adapter like the React adapter, the `fields` and `config` arguments are simply passed to the `useForm` function.
 
 For example:
 

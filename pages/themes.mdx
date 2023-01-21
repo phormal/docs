@@ -1,0 +1,53 @@
+# Themes
+
+There are currently two available themes for the library. Both themes come with built-in:
+
+* Responsiveness to different screen sizes and root font sizes
+* Left-to-right and right-to-left support
+* Dark and light color schemes
+
+## Installation
+```bash copy
+npm install @phormal/theme-basic
+```
+
+or
+
+```bash copy
+npm install @phormal/theme-material
+```
+
+Examples of how they look can be found on the examples page:
+* [Basic](/examples)
+* [Material](/examples?theme=material).
+
+## Importing
+
+import {Tabs, Tab} from 'nextra-theme-docs';
+
+<Tabs items={['basic', 'material']}>
+	<Tab>
+		```js copy
+		@import '@phormal/theme-basic/dist/index.css';
+		```
+	</Tab>
+
+	<Tab>
+		```js copy
+		@import '@phormal/theme-material/dist/index.css';
+		```
+	</Tab>
+</Tabs>
+
+## Configuration
+
+If you're using the `basic` theme, you do not need to configure anything, since this is the default. For using the `material` theme, please enter the following into your configuration object:
+
+```js
+const config = {
+  // .. other config
+  theme: 'material'
+}
+```
+
+For more on configuration of the form, please refer to the [configuration section](/usage#config).

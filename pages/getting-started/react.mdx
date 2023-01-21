@@ -1,4 +1,4 @@
-# Tutorial of the basics - React
+# Tutorial of the basics: React integration
 
 For this short tutorial, we will need the React adapter, as well as a theme:
 
@@ -44,15 +44,13 @@ export default function PhormalExample() {
   }
   const formInstance = useForm(formFields)
 
-  const [values, setValues] = useState<null|Record<string, any>>(null)
-
   const getValues = () => {
-    setValues(formInstance.$values())
+    console.log(formInstance.$values()) // Logs the values of all form fields
   }
 
   const validate = () => {
     const formIsValid = formInstance.$validate()
-    console.log(formIsValid)
+    console.log(formIsValid) // Logs true if all fields are valid, false otherwise
   }
 
   return (
@@ -62,10 +60,6 @@ export default function PhormalExample() {
           <h1>Phormal</h1>
 
           <FormContent instance={formInstance} />
-
-          <button onClick={getValues}>Get values</button>
-
-          <button onClick={validate}>Validate</button>
         </div>
       </main>
     </>
@@ -75,11 +69,11 @@ export default function PhormalExample() {
 
 ## Result
 
-import BasicDemo from "../../../components/BasicDemo";
+import BasicDemo from "../../components/BasicDemo";
 
 <BasicDemo />
 
 ## Example repo
 
-If you want to check this code out and play around with it, you can fork [this example-repo](https://github.com/phormal/example-react/fork).
+If you want to play around with this code locally, you can clone this repo: https://github.com/phormal/example-react
 
