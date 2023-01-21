@@ -1,3 +1,6 @@
+const siteTitle = 'Phormal: form generation, themes and validation for web artisans';
+const siteDescription = 'Schema based form generator | multi-language support | built in validation | dark mode support | right-to-left support | compatible with React, Vue, Svelte and more';
+
 export default {
   logo: <span>Phormal</span>,
   project: {
@@ -16,7 +19,14 @@ export default {
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Phormal',
-      description: 'Form generator with built in validation and theming. Can be used with React, Vue, Svelte or any other JavaScript framework.',
+      description: siteDescription,
     }
   },
+  head: (
+    <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta property="og:title" content={siteTitle} />
+      <meta property="og:description" content={siteDescription} />
+    </>
+  )
 }
