@@ -6,7 +6,6 @@ export default {
   project: {
     link: 'https://github.com/phormal/phormal',
   },
-  darkMode: false,
   docsRepositoryBase: 'https://github.com/phormal/phormal/tree/master/docs',
   feedback: {
     content: null,
@@ -28,5 +27,5 @@ export default {
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={siteDescription} />
     </>
-  )
+  ),
 }

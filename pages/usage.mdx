@@ -46,18 +46,20 @@ const fields = {
 
 The configuration for each field can take the following properties:
 
-|                      Property                      |                                                              Type/Possible values                                                              |     Default     |
-|:--------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|:---------------:|
-|                       `type`                       |                                   `text`, `select`, `checkbox`, `radiogroup`, `number`, `email`, `password`                                    |    `'text'`     |
-|                      `label`                       |                                                                     string                                                                     |      `''`       |
-|                   `placeholder`                    |                                                                     string                                                                     |      `''`       |
-|                      `value`                       |                                               string (for most types) or boolean (for checkbox)                                                | `''` or `false` |
-|                     `disabled`                     |                                                                    boolean                                                                     |     `false`     |
-|                    `disabledIf`                    |                                                   See [field conditions](#field-conditions)                                                    |   `undefined`   |
-|                      `hideIf`                      |                                                   See [field conditions](#field-conditions)                                                    |   `undefined`   |
-|                       `row`                        | Combine several fields visually into a flex row, by giving them the property `row` and assigning them a common **string** value of your choice |   `undefined`   |
-| `options` (only for **radiogroup** and **select**) |                                         Array of options with type `{ label: string, value: string }`                                          |      `[]`       |
-|                      `hooks`                       |                                                   Array of returned [hooks](/api-docs/hooks)                                                   |                 |
+|                                 Property                                  |                                                              Type/Possible values                                                              |     Default     |
+|:-------------------------------------------------------------------------:|:----------------------------------------------------------------------------------------------------------------------------------------------:|:---------------:|
+|                                  `type`                                   |                  `text`, `select`, `checkbox`, `radiogroup`, `number`, `email`, `password`, `date`, `datetime-local`, `time`                   |    `'text'`     |
+|                                  `label`                                  |                                                                     string                                                                     |      `''`       |
+| `placeholder` (has no effect in material theme; label acts a placeholder) |                                                                     string                                                                     |      `''`       |
+|                                  `value`                                  |                                               string (for most types) or boolean (for checkbox)                                                | `''` or `false` |
+|                                `disabled`                                 |                                                                    boolean                                                                     |     `false`     |
+|                               `disabledIf`                                |                                                   See [field conditions](#field-conditions)                                                    |   `undefined`   |
+|                                 `hideIf`                                  |                                                   See [field conditions](#field-conditions)                                                    |   `undefined`   |
+|                                   `row`                                   | Combine several fields visually into a flex row, by giving them the property `row` and assigning them a common **string** value of your choice |   `undefined`   |
+|            `options` (only for **radiogroup** and **select**)             |                                         Array of options with type `{ label: string, value: string }`                                          |      `[]`       |
+|                                  `hooks`                                  |                                                   Array of returned [hooks](/api-docs/hooks)                                                   |                 |
+|          `min` (only for date, datetime-local, and time inputs)           |                                See [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/min)                                |                 |
+|          `max` (only for date, datetime-local, and time inputs)           |                                See [MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/max)                                |                 |
 
 In some cases, you might need to react to the native events of a field. This is possible through the properties `handleOnClick`, `handleOnInput`, `handleOnChange`, `handleOnFocus` and `handleOnBlur`. These properties take the shape of a function, where the first argument is the event itself. For example:
 
@@ -129,3 +131,29 @@ Returns an object with key-value pairs, where each key is the name of the fields
 #### `$validate()`
 
 Runs all validators for all fields. Returns `true` if the values of all fields are valid, and `false` otherwise.
+
+#### `$reset()`
+
+If called with no arguments, this method resets all fields to their initial values. You can also specify the name of your different fields as arguments to the method. This will then only reset the specified fields. For example:
+
+```js copy
+const phormal = new Phormal({
+  name: {
+    label: 'Name'
+  },
+  email: {
+    label: 'Email'
+  },
+  password: {
+    label: 'Password'
+  }
+})
+
+phormal.$reset('email', 'password') // resets only the fields 'email' and 'password'
+```
+
+### Properties
+
+#### `$isDirty`
+
+Returns `true` if the value of any field has been changed since initializing the form, and `false` otherwise.

@@ -1,0 +1,30 @@
+```js copy
+import { Phormal } from '@phormal/core';
+
+const formFields = {
+  date: {
+    label: 'Date input',
+    type: 'date'
+  },
+  dateWithMinMax: {
+    label: 'Date input with min and max',
+    type: 'date',
+    min: '2023-01-01',
+    max: '2023-12-31'
+  },
+  dateTimeLocal: {
+    label: 'Date and time input',
+    type: 'datetime-local'
+  },
+  time: {
+    label: 'Time input',
+    type: 'time',
+    min: '09:00',
+    max: '18:00'
+  }
+}
+
+const formConfig = { el: '#phormal-checkboxes', theme: /** name of theme */ }
+
+const form = new Phormal(formFields, formConfig)
+```
