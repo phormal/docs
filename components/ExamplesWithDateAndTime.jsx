@@ -19,17 +19,19 @@ const BasicDemo = () => {
         type: 'date',
         min: '2023-01-01',
         max: '2023-12-31',
-      },
-      dateTimeLocal: {
-        label: 'Date and time input',
-        type: 'datetime-local',
+        row: 'row-1'
       },
       time: {
         label: 'Time input',
         type: 'time',
         min: '09:00',
         max: '18:00',
-      }
+        row: 'row-1'
+      },
+      dateTimeLocal: {
+        label: 'Date and time input',
+        type: 'datetime-local',
+      },
     }, {
       el: '#phormal-date-and-time',
       theme,

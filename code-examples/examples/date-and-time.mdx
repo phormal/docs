@@ -10,21 +10,23 @@ const formFields = {
     label: 'Date input with min and max',
     type: 'date',
     min: '2023-01-01',
-    max: '2023-12-31'
-  },
-  dateTimeLocal: {
-    label: 'Date and time input',
-    type: 'datetime-local'
+    max: '2023-12-31',
+    row: 'row-1'
   },
   time: {
     label: 'Time input',
     type: 'time',
     min: '09:00',
-    max: '18:00'
+    max: '18:00',
+    row: 'row-1'
+  },
+  dateTimeLocal: {
+    label: 'Date and time input',
+    type: 'datetime-local'
   }
 }
 
-const formConfig = { el: '#phormal-checkboxes', theme: /** name of theme */ }
+const formConfig = { el: '#phormal-date-and-time', theme: /** name of theme */ }
 
 const form = new Phormal(formFields, formConfig)
 ```
