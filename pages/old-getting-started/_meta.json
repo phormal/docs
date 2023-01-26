@@ -1,9 +1,0 @@
-{
-  "use-cases": "Use cases",
-  "index": "Installation",
-  "examples": "Examples",
-  "validation": "Validation",
-  "vue-integration": {
-    "display": "hidden"
-  }
-}

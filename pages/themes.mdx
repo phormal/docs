@@ -51,3 +51,17 @@ const config = {
 ```
 
 For more on configuration of the form, please refer to the [configuration section](/usage#config).
+
+## Dark mode
+
+Dark mode ships per default with both themes. It is activated in one of two ways:
+
+1. through the `color-scheme`-attribute on a parent element of the form (in most cases this would be the `<html>`-Tag). For example:
+
+```html
+<html style="color-scheme: dark;"></html>
+```
+
+2. through user system settings.
+
+If the user's system setting and the `color-scheme` attribute are conflicting, the latter will have precedence, in order to allow full control for the website maintainer.
